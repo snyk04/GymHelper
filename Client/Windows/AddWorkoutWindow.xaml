@@ -10,7 +10,7 @@
         <ListView Name="SetList">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Exercise}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Exercise, Converter={StaticResource ExerciseNameConverter}}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="Exercise" Click="OnColumnHeaderClick" Content="Упражнение"></GridViewColumnHeader>
                         </GridViewColumn.Header>

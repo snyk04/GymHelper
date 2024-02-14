@@ -7,5 +7,6 @@
     <Application.Resources>
         <converters:RepsSetConverter x:Key="RepsSetConverter" />
         <converters:WeightSetConverter x:Key="WeightSetConverter" />
+        <converters:ExerciseNameConverter x:Key="ExerciseNameConverter" />
     </Application.Resources>
 </Application>
