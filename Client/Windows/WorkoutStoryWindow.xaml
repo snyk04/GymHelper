@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:converters="clr-namespace:Client.Utils.Converters"
         mc:Ignorable="d"
-        Title="История" Height="450" Width="800">
+        Title="История тренировок" Height="450" Width="800">
     <StackPanel>
         <ListView Name="WorkoutList">
             <ListView.View>

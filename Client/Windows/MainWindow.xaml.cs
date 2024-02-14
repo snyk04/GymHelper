@@ -26,7 +26,7 @@ public partial class MainWindow : Window
         
         var workoutStory = new MenuItem
         {
-            Header = "Посмотреть записи"
+            Header = "История тренировок"
         };
             
         workoutStory.Click += OpenWorkoutStoryWindow; 

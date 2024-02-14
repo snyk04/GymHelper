@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 using BusinessLogic.Interfaces;
 using BusinessLogic.Models;
 using Client.Models;
@@ -46,7 +44,13 @@ public partial class WorkoutStoryWindow
     private void HandleAddButtonClicked(object sender, RoutedEventArgs e)
     {
         var addWorkoutWindow = new AddWorkoutWindow(database);
-        addWorkoutWindow.OnDataUpdate += FillWorkoutStoryList;
+        addWorkoutWindow.OnWorkoutSaved += HandleWorkoutSaved;
         addWorkoutWindow.ShowDialog();
+    }
+
+    private void HandleWorkoutSaved(Workout workout)
+    {
+        database.Workouts.Add(workout);
+        FillWorkoutStoryList();
     }
 }

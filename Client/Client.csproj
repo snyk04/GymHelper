@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net8.0-windows</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
     </PropertyGroup>
@@ -33,6 +33,10 @@
 
     <ItemGroup>
       <Reference Include="System.Windows.Forms" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
     </ItemGroup>
 
 </Project>
