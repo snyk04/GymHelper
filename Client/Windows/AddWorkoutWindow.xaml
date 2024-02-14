@@ -12,7 +12,17 @@
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Exercise}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Exercise" Click="OnColumnHeaderClick" Content="Упражение"></GridViewColumnHeader>
+                            <GridViewColumnHeader Tag="Exercise" Click="OnColumnHeaderClick" Content="Упражнение"></GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Sets, Converter={StaticResource RepsSetConverter}}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Reps" Click="OnColumnHeaderClick" Content="Повторения"></GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Sets, Converter={StaticResource WeightSetConverter}}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Weight" Click="OnColumnHeaderClick" Content="Вес"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>

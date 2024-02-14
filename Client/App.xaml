@@ -2,8 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Client"
+             xmlns:converters="clr-namespace:Client.Utils.Converters"
              Startup="OnStartup">
     <Application.Resources>
-         
+        <converters:RepsSetConverter x:Key="RepsSetConverter" />
+        <converters:WeightSetConverter x:Key="WeightSetConverter" />
     </Application.Resources>
 </Application>

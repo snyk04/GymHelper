@@ -48,7 +48,7 @@ public partial class AddSetsWindow
 
     private SetView ConvertSetToSetView(Set set)
     {
-        return new SetView()
+        return new SetView
         {
             Reps = set.Reps,
             Weight = set.Weight

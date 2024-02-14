@@ -53,12 +53,13 @@ public partial class AddWorkoutWindow
         var setsByExercises = new Dictionary<Exercise, List<Set>>();
         foreach (var set in sets)
         {
-            if (!setsByExercises.TryAdd(set.Exercise, new List<Set>()))
+            if (!setsByExercises.ContainsKey(set.Exercise))
             {
-                setsByExercises[set.Exercise].Add(set);
+                setsByExercises[set.Exercise] = new List<Set> { set };
+                continue;
             }
 
-            setsByExercises[set.Exercise] = new List<Set> { set };
+            setsByExercises[set.Exercise].Add(set);
         }
         return setsByExercises;
     }
