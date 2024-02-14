@@ -23,20 +23,14 @@ public partial class MainWindow : Window
     private void InitializeWindowsMenu()
     {
         WindowsMenu.Items.Clear();
-            
-        var addWorkout = new MenuItem
-        {
-            Header = "Добавить запись"
-        };
+        
         var workoutStory = new MenuItem
         {
             Header = "Посмотреть записи"
         };
             
-        addWorkout.Click += OpenAddWorkoutWindow; 
         workoutStory.Click += OpenWorkoutStoryWindow; 
             
-        WindowsMenu.Items.Add(addWorkout);
         WindowsMenu.Items.Add(workoutStory);
     }
     

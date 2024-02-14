@@ -3,10 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:Client"
+        xmlns:converters="clr-namespace:Client.Utils.Converters"
         mc:Ignorable="d"
         Title="История" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <ListView Name="WorkoutList">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Id" Click="OnColumnHeaderClick" Content="ID"></GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime, Converter={StaticResource DateTimeConverter}}"> -->
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="DateTime" Click="OnColumnHeaderClick" Content="Дата"></GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Width="100" Height="20" Click="HandleAddButtonClicked" Content="Добавить"></Button>
+    </StackPanel>
 </Window>

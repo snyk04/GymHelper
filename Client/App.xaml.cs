@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using BusinessLogic.Interfaces;
 using Client.Windows;
-using Database;
 
 namespace Client;
 
@@ -14,7 +13,7 @@ public partial class App
 
     public App()
     {
-        database = new SqliteDatabase();
+        database = new Database.Database();
     }
     
     private void OnStartup(object sender, StartupEventArgs e)
