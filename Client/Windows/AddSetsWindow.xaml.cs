@@ -38,10 +38,10 @@ public partial class AddSetsWindow
     private void HandleSetAdded(Set set)
     {
         sets.Add(set);
-        UpdateSellList();
+        UpdateSetsList();
     }
 
-    private void UpdateSellList()
+    private void UpdateSetsList()
     {
         SetList.ItemsSource = sets.Select(ConvertSetToSetView);
     }
@@ -50,6 +50,7 @@ public partial class AddSetsWindow
     {
         return new SetView
         {
+            Id = set.Id,
             Reps = set.Reps,
             Weight = set.Weight
         };
@@ -64,5 +65,16 @@ public partial class AddSetsWindow
         
         OnSetsAdded?.Invoke(sets);
         Close();
+    }
+    
+    private void OnDeleteClicked(object sender, RoutedEventArgs e)
+    {
+        var setView = (SetView)SetList.SelectedItem;
+
+        if (setView != null)
+        {
+            sets.RemoveAll(set => set.Id == setView.Id);
+            UpdateSetsList();
+        }
     }
 }

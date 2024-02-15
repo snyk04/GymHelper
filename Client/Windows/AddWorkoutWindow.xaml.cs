@@ -38,10 +38,10 @@ public partial class AddWorkoutWindow
     private void HandleSetsAdded(IEnumerable<Set> newSets)
     {
         sets.AddRange(newSets);
-        FillSetsList();
+        UpdateSetsList();
     }
 
-    private void FillSetsList()
+    private void UpdateSetsList()
     {
         var setsByExercises = GetSetsByExercises();
         var setViews = setsByExercises.Values.Select(ConvertSetsToSetView);
@@ -83,5 +83,16 @@ public partial class AddWorkoutWindow
         OnWorkoutSaved?.Invoke(workout);
         
         Close();
+    }
+    
+    private void OnDeleteClicked(object sender, RoutedEventArgs e)
+    {
+        var setView = (SetsView)SetList.SelectedItem;
+
+        if (setView != null)
+        {
+            sets.RemoveAll(set => set.Exercise == setView.Exercise);
+            UpdateSetsList();
+        }
     }
 }

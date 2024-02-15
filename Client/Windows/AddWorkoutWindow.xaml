@@ -8,6 +8,11 @@
         Title="Добавить тренировку" Height="450" Width="800">
     <StackPanel>
         <ListView Name="SetList">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="OnDeleteClicked"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Exercise, Converter={StaticResource ExerciseNameConverter}}">
