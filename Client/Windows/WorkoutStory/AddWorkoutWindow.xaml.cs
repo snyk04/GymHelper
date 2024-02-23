@@ -4,16 +4,16 @@ using BusinessLogic.Models;
 using Client.Models;
 using Client.Utils.Sorting;
 
-namespace Client.Windows;
+namespace Client.Windows.WorkoutStory;
 
 public partial class AddWorkoutWindow
 {
-    private readonly IDatabase database;
-    private readonly ListViewSorter listViewSorter;
-
     public event Action<Workout> OnWorkoutSaved;
 
-    private readonly List<Set> sets = new();
+    private readonly IDatabase database;
+    private readonly ListViewSorter listViewSorter;
+    
+    private List<Set> sets = new();
 
     public AddWorkoutWindow(IDatabase database)
     {
@@ -31,20 +31,22 @@ public partial class AddWorkoutWindow
     private void HandleAddButtonClicked(object sender, RoutedEventArgs e)
     {
         var addSetsWindow = new AddSetsWindow(database);
-        addSetsWindow.OnSetsAdded += HandleSetsAdded;
+        addSetsWindow.OnSetsAdded += newSets =>
+        {
+            sets.AddRange(newSets);
+            UpdateSetsList();
+        };
         addSetsWindow.ShowDialog();
-    }
-
-    private void HandleSetsAdded(IEnumerable<Set> newSets)
-    {
-        sets.AddRange(newSets);
-        UpdateSetsList();
     }
 
     private void UpdateSetsList()
     {
         var setsByExercises = GetSetsByExercises();
-        var setViews = setsByExercises.Values.Select(ConvertSetsToSetView);
+        var setViews = setsByExercises.Values.Select(sets => new SetsView
+        {
+            Exercise = sets.First().Exercise,
+            Sets = sets
+        });
         SetList.ItemsSource = setViews;
     }
 
@@ -64,15 +66,6 @@ public partial class AddWorkoutWindow
         return setsByExercises;
     }
 
-    private SetsView ConvertSetsToSetView(List<Set> sets)
-    {
-        return new SetsView
-        {
-            Exercise = sets.First().Exercise,
-            Sets = sets
-        };
-    }
-
     private void HandleSaveButtonClicked(object sender, RoutedEventArgs e)
     {
         var workout = new Workout
@@ -81,8 +74,23 @@ public partial class AddWorkoutWindow
             Sets = sets
         };
         OnWorkoutSaved?.Invoke(workout);
-        
         Close();
+    }
+    
+    private void OnEditClicked(object sender, RoutedEventArgs e)
+    {
+        var setsView = (SetsView)SetList.SelectedItem;
+
+        if (setsView != null)
+        {
+            var editSetsWindow = new EditSetsWindow(database, setsView);
+            editSetsWindow.OnSetsUpdated += newSets =>
+            {
+                sets = newSets;
+                UpdateSetsList();
+            };
+            editSetsWindow.ShowDialog();
+        }
     }
     
     private void OnDeleteClicked(object sender, RoutedEventArgs e)

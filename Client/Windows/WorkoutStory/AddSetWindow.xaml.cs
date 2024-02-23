@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using BusinessLogic.Models;
 
-namespace Client.Windows;
+namespace Client.Windows.WorkoutStory;
 
 public partial class AddSetWindow
 {
@@ -19,6 +19,7 @@ public partial class AddSetWindow
             Reps = int.Parse(RepsTextBox.Text),
             Weight = float.Parse(WeightTextBox.Text)
         };
+        
         OnSetAdded?.Invoke(set);
         
         Close();

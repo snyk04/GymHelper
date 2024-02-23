@@ -15,7 +15,11 @@ public class DatabaseTestFiller
     {
         database.Exercises.Add(new Exercise
         {
-            Name = "Bench press"
+            Name = "Жим лёжа"
+        });
+        database.Exercises.Add(new Exercise
+        {
+            Name = "Выпады с гантелями"
         });
     }
 

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Client.Windows.WorkoutStoryWindow"
+﻿<Window x:Class="Client.Windows.WorkoutStory.WorkoutStoryWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,6 +10,7 @@
         <ListView Name="WorkoutList">
             <ListView.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="OnEditClicked"/>
                     <MenuItem Header="Удалить" Click="OnDeleteClicked"/>
                 </ContextMenu>
             </ListView.ContextMenu>
@@ -20,8 +21,7 @@
                             <GridViewColumnHeader Tag="Id" Click="OnColumnHeaderClick" Content="ID"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime, Converter={StaticResource DateTimeConverter}}"> -->
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime, Converter={StaticResource DateTimeConverter}}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="DateTime" Click="OnColumnHeaderClick" Content="Дата"></GridViewColumnHeader>
                         </GridViewColumn.Header>

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using BusinessLogic.Interfaces;
+using Client.Windows.WorkoutStory;
 
 namespace Client.Windows;
 
@@ -32,12 +33,6 @@ public partial class MainWindow : Window
         workoutStory.Click += OpenWorkoutStoryWindow; 
             
         WindowsMenu.Items.Add(workoutStory);
-    }
-    
-    private void OpenAddWorkoutWindow(object sender, RoutedEventArgs e)
-    {
-        var productsWindow = new AddWorkoutWindow(database);
-        productsWindow.ShowDialog();
     }
         
     private void OpenWorkoutStoryWindow(object sender, RoutedEventArgs routedEventArgs)

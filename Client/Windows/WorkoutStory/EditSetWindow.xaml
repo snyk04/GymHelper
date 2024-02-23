@@ -1,9 +1,8 @@
-﻿<Window x:Class="Client.Windows.AddSetWindow"
+﻿<Window x:Class="Client.Windows.WorkoutStory.EditSetWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:Client.Windows"
         mc:Ignorable="d"
         Title="Добавить подход" Height="450" Width="800">
     <StackPanel VerticalAlignment="Center">

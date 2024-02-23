@@ -1,8 +1,7 @@
 ﻿using BusinessLogic.Interfaces;
-using Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace SqliteDatabase;
+namespace Database;
 
 public class Repository<T> : IRepository<T> where T : class
 {

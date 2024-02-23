@@ -1,15 +1,16 @@
-﻿<Window x:Class="Client.Windows.AddSetsWindow"
+﻿<Window x:Class="Client.Windows.WorkoutStory.EditSetsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="Добавить упражнение" Height="450" Width="800">
+        Title="Редактировать упражнение" Height="450" Width="800">
     <StackPanel>
         <ListView Name="SetList">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Удалить" Click="OnDeleteClicked"/>
+                    <MenuItem Header="Редактировать" Click="OnEditClicked" />
+                    <MenuItem Header="Удалить" Click="OnDeleteClicked" />
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>
@@ -28,13 +29,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Width="100" Height="20" Click="HandleAddButtonClicked" Content="Добавить"></Button>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label Content="Упражнение"></Label>
             <ComboBox Name="ExerciseComboBox" DisplayMemberPath="Name" Height="20" Width="100"></ComboBox>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="100" Height="20" Click="HandleAddButtonClicked" Content="Добавить"></Button>
-            <Button Width="100" Height="20" Click="HandleSaveButtonClicked" Content="Сохранить"></Button>
-        </StackPanel>
+        <Button Width="100" Height="20" Click="HandleSaveButtonClicked" Content="Сохранить"></Button>
     </StackPanel>
 </Window>

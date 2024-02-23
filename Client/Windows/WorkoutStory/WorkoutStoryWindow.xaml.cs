@@ -1,11 +1,9 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using BusinessLogic.Interfaces;
-using BusinessLogic.Models;
 using Client.Models;
 using Client.Utils.Sorting;
 
-namespace Client.Windows;
+namespace Client.Windows.WorkoutStory;
 
 public partial class WorkoutStoryWindow
 {
@@ -25,16 +23,11 @@ public partial class WorkoutStoryWindow
     private void UpdateWorkoutList()
     {
         var workouts = database.Workouts.GetList();
-        WorkoutList.ItemsSource = workouts.Select(ConvertWorkoutToWorkoutView);
-    }
-
-    private WorkoutView ConvertWorkoutToWorkoutView(Workout workout)
-    {
-        return new WorkoutView
+        WorkoutList.ItemsSource = workouts.Select(workout => new WorkoutView
         {
             Id = workout.Id,
             DateTime = workout.DateTime
-        };
+        });
     }
 
     private void OnColumnHeaderClick(object sender, RoutedEventArgs e)
@@ -45,16 +38,30 @@ public partial class WorkoutStoryWindow
     private void HandleAddButtonClicked(object sender, RoutedEventArgs e)
     {
         var addWorkoutWindow = new AddWorkoutWindow(database);
-        addWorkoutWindow.OnWorkoutSaved += HandleWorkoutSaved;
+        addWorkoutWindow.OnWorkoutSaved += workout =>
+        {
+            database.Workouts.Add(workout);
+            UpdateWorkoutList();
+        };
         addWorkoutWindow.ShowDialog();
     }
 
-    private void HandleWorkoutSaved(Workout workout)
+    private void OnEditClicked(object sender, RoutedEventArgs e)
     {
-        database.Workouts.Add(workout);
-        UpdateWorkoutList();
-    }
+        var workoutView = (WorkoutView)WorkoutList.SelectedItem;
 
+        if (workoutView != null)
+        {
+            var editWorkoutWindow = new EditWorkoutWindow(database, database.Workouts.Get(workoutView.Id));
+            editWorkoutWindow.OnWorkoutUpdated += workout =>
+            {
+                database.Workouts.Update(workout);
+                UpdateWorkoutList();
+            };
+            editWorkoutWindow.ShowDialog();
+        }
+    }
+    
     private void OnDeleteClicked(object sender, RoutedEventArgs e)
     {
         var workout = (WorkoutView)WorkoutList.SelectedItem;
