@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using BusinessLogic.Models;
 
 namespace Client.Windows.WorkoutStory;
@@ -16,8 +17,8 @@ public partial class AddSetWindow
     {
         var set = new Set
         {
-            Reps = int.Parse(RepsTextBox.Text),
-            Weight = float.Parse(WeightTextBox.Text)
+            Reps = int.Parse(RepsTextBox.Text, CultureInfo.InvariantCulture),
+            Weight = float.Parse(WeightTextBox.Text, CultureInfo.InvariantCulture)
         };
         
         OnSetAdded?.Invoke(set);

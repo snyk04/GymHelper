@@ -9,6 +9,7 @@ public class Database : IDatabase
     private const string ConnectionString = "Data Source=database.db";
 
     public IRepository<Workout> Workouts { get; private set; }
+    public IRepository<Set> Sets { get; private set; }
     public IRepository<Exercise> Exercises { get; private set; }
     
     public Database()
@@ -19,21 +20,22 @@ public class Database : IDatabase
         LoadDbSets(applicationDbContext);
         
         Workouts = new Repository<Workout>(applicationDbContext.Workouts, applicationDbContext);
+        Sets = new Repository<Set>(applicationDbContext.Sets, applicationDbContext);
         Exercises = new Repository<Exercise>(applicationDbContext.Exercises, applicationDbContext);
 
-        LoadTestData();
+        // LoadTestData();
     }
 
     private void ConfigureApplicationDbContext(DbContext applicationContext)
     {
-        applicationContext.Database.EnsureDeleted();
         applicationContext.Database.EnsureCreated();
     }
 
     private void LoadDbSets(ApplicationDbContext applicationDbContext)
     {
-        applicationDbContext.Workouts.Load();
         applicationDbContext.Exercises.Load();
+        applicationDbContext.Sets.Load();
+        applicationDbContext.Workouts.Load();
     }
 
     private void LoadTestData()

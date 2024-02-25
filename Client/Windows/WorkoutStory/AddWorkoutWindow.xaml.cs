@@ -73,6 +73,7 @@ public partial class AddWorkoutWindow
             DateTime = DateTimePicker.Value.Value,
             Sets = sets
         };
+        
         OnWorkoutSaved?.Invoke(workout);
         Close();
     }

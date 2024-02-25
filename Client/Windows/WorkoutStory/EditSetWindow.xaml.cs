@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using BusinessLogic.Models;
 
 namespace Client.Windows.WorkoutStory;
@@ -21,8 +22,8 @@ public partial class EditSetWindow
     
     private void HandleSaveButtonClicked(object sender, RoutedEventArgs e)
     {
-        set.Reps = int.Parse(RepsTextBox.Text);
-        set.Weight = float.Parse(WeightTextBox.Text);
+        set.Reps = int.Parse(RepsTextBox.Text, CultureInfo.InvariantCulture);
+        set.Weight = float.Parse(WeightTextBox.Text, CultureInfo.InvariantCulture);
         
         OnSetUpdated?.Invoke(set);
         

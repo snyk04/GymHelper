@@ -40,6 +40,10 @@ public partial class WorkoutStoryWindow
         var addWorkoutWindow = new AddWorkoutWindow(database);
         addWorkoutWindow.OnWorkoutSaved += workout =>
         {
+            foreach (var set in workout.Sets)
+            {
+                database.Sets.Add(set);
+            }
             database.Workouts.Add(workout);
             UpdateWorkoutList();
         };
@@ -55,6 +59,17 @@ public partial class WorkoutStoryWindow
             var editWorkoutWindow = new EditWorkoutWindow(database, database.Workouts.Get(workoutView.Id));
             editWorkoutWindow.OnWorkoutUpdated += workout =>
             {
+                foreach (var set in workout.Sets)
+                {
+                    if (database.Sets.GetList().Any(setInDb => setInDb.Id == set.Id))
+                    {
+                        database.Sets.Update(set);
+                    }
+                    else
+                    {
+                        database.Sets.Add(set);
+                    }
+                }
                 database.Workouts.Update(workout);
                 UpdateWorkoutList();
             };
