@@ -4,10 +4,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:utils="clr-namespace:Client.Utils"
         mc:Ignorable="d"
         Title="Добавить тренировку" Height="450" Width="800">
-    <StackPanel>
-        <ListView Name="SetList">
+    <StackPanel VerticalAlignment="Center" utils:MarginSetter.Margin="2">
+        <ListView Name="SetList" HorizontalAlignment="Center">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Редактировать" Click="OnEditClicked"/>

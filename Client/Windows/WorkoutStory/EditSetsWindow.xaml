@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:utils="clr-namespace:Client.Utils"
         mc:Ignorable="d"
         Title="Редактировать упражнение" Height="450" Width="800">
-    <StackPanel>
-        <ListView Name="SetList">
+    <StackPanel VerticalAlignment="Center" utils:MarginSetter.Margin="2">
+        <ListView Name="SetList" HorizontalAlignment="Center">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Редактировать" Click="OnEditClicked" />
@@ -32,7 +33,7 @@
         <Button Width="100" Height="20" Click="HandleAddButtonClicked" Content="Добавить"></Button>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label Content="Упражнение"></Label>
-            <ComboBox Name="ExerciseComboBox" DisplayMemberPath="Name" Height="20" Width="100"></ComboBox>
+            <ComboBox Name="ExerciseComboBox" DisplayMemberPath="Name" Height="20" Width="100" DropDownClosed="ExerciseComboBox_OnDropDownClosed"></ComboBox>
         </StackPanel>
         <Button Width="100" Height="20" Click="HandleSaveButtonClicked" Content="Сохранить"></Button>
     </StackPanel>

@@ -1,7 +1,11 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using BusinessLogic.Interfaces;
 using BusinessLogic.Models;
 using Client.Models;
+using Client.Utils;
 using Client.Utils.Sorting;
 
 namespace Client.Windows.WorkoutStory;
@@ -21,7 +25,7 @@ public partial class AddSetsWindow
 
         listViewSorter = new ListViewSorter(SetList);
 
-        ExerciseComboBox.ItemsSource = database.Exercises.GetList();
+        ExerciseComboBox.ItemsSource = database.Exercises.GetList().OrderBy(exercise => exercise.Name);
     }
 
     private void OnColumnHeaderClick(object sender, RoutedEventArgs e)
@@ -96,5 +100,11 @@ public partial class AddSetsWindow
             setsBySetViews.Remove(setView);
             UpdateSetsList();
         }
+    }
+
+    private void ExerciseComboBox_OnDropDownClosed(object sender, EventArgs e)
+    {
+        var selectedExercise = ((Exercise)ExerciseComboBox.SelectedItem).Name;
+        ExerciseComboBox.AutoSizeWidth(selectedExercise);
     }
 }

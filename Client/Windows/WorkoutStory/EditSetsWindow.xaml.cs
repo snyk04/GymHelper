@@ -2,6 +2,7 @@
 using BusinessLogic.Interfaces;
 using BusinessLogic.Models;
 using Client.Models;
+using Client.Utils;
 using Client.Utils.Sorting;
 
 namespace Client.Windows.WorkoutStory;
@@ -21,9 +22,10 @@ public partial class EditSetsWindow
 
         listViewSorter = new ListViewSorter(SetList);
 
-        ExerciseComboBox.ItemsSource = database.Exercises.GetList();
-
+        ExerciseComboBox.ItemsSource = database.Exercises.GetList().OrderBy(exercise => exercise.Name);
         ExerciseComboBox.SelectedItem = setsView.Exercise;
+        ExerciseComboBox.AutoSizeWidth(setsView.Exercise.Name);
+
         sets = setsView.Sets;
         UpdateSetsList();
     }
@@ -100,5 +102,11 @@ public partial class EditSetsWindow
             setsBySetViews.Remove(setView);
             UpdateSetsList();
         }
+    }
+    
+    private void ExerciseComboBox_OnDropDownClosed(object sender, EventArgs e)
+    {
+        var selectedExercise = ((Exercise)ExerciseComboBox.SelectedItem).Name;
+        ExerciseComboBox.AutoSizeWidth(selectedExercise);
     }
 }
