@@ -16,11 +16,11 @@
             </ListView.ContextMenu>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Id" Click="OnColumnHeaderClick" Content="ID"></GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
+                    <GridViewColumn
+                        Header="№"
+                        DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                         AncestorType={x:Type ListViewItem}}, 
+                                         Converter={StaticResource IndexConverter}}" />
                     <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime, Converter={StaticResource DateTimeConverter}}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="DateTime" Click="OnColumnHeaderClick" Content="Дата"></GridViewColumnHeader>

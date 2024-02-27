@@ -22,7 +22,7 @@ public partial class WorkoutStoryWindow
 
     private void UpdateWorkoutList()
     {
-        var workouts = database.Workouts.GetList();
+        var workouts = database.Workouts.GetList().OrderBy(workout => workout.DateTime);
         WorkoutList.ItemsSource = workouts.Select(workout => new WorkoutView
         {
             Id = workout.Id,

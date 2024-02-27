@@ -8,5 +8,6 @@
         <converters:WeightSetConverter x:Key="WeightSetConverter" />
         <converters:ExerciseNameConverter x:Key="ExerciseNameConverter" />
         <converters:DateTimeConverter x:Key="DateTimeConverter" />
+        <converters:IndexConverter x:Key="IndexConverter" />
     </Application.Resources>
 </Application>
