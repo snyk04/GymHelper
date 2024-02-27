@@ -9,7 +9,7 @@ public class WeightSetConverter : IValueConverter
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         var sets = (List<Set>)value;
-        return string.Join(", ", sets.Select(set => set.Weight.ToString()));
+        return string.Join(", ", sets.Select(set => set.Weight.ToString(CultureInfo.InvariantCulture)));
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
