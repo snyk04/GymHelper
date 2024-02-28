@@ -77,31 +77,35 @@ public partial class EditSetsWindow
     {
         var setView = (SetView)SetList.SelectedItem;
 
-        if (setView != null)
+        if (setView == null)
         {
-            var editSetWindow = new EditSetWindow(setsBySetViews[setView]);
-            editSetWindow.OnSetUpdated += set =>
-            {
-                var oldSet = setsBySetViews[setView];
-                sets.Remove(oldSet);
-                sets.Add(set);
-                setsBySetViews[setView] = set;
-                UpdateSetsList();
-            };
-            editSetWindow.ShowDialog();
+            return;
         }
+        
+        var editSetWindow = new EditSetWindow(setsBySetViews[setView]);
+        editSetWindow.OnSetUpdated += set =>
+        {
+            var oldSet = setsBySetViews[setView];
+            sets.Remove(oldSet);
+            sets.Add(set);
+            setsBySetViews[setView] = set;
+            UpdateSetsList();
+        };
+        editSetWindow.ShowDialog();
     }
 
     private void OnDeleteClicked(object sender, RoutedEventArgs e)
     {
         var setView = (SetView)SetList.SelectedItem;
 
-        if (setView != null)
+        if (setView == null)
         {
-            sets.Remove(setsBySetViews[setView]);
-            setsBySetViews.Remove(setView);
-            UpdateSetsList();
+            return;
         }
+        
+        sets.Remove(setsBySetViews[setView]);
+        setsBySetViews.Remove(setView);
+        UpdateSetsList();
     }
     
     private void ExerciseComboBox_OnDropDownClosed(object sender, EventArgs e)

@@ -8,7 +8,7 @@ namespace Client.Utils.Sorting;
 /// <summary>
 /// Draws 🔼 or 🔽 in list column header, this symbol shows whether sorting is ascending or descending
 /// </summary>
-public class SortAdorner : Adorner
+public class SortAdorner(UIElement element, ListSortDirection direction) : Adorner(element)
 {
     private const int MinColumnWidth = 20;
     
@@ -22,12 +22,7 @@ public class SortAdorner : Adorner
         [ListSortDirection.Descending] = DescendingGeometry
     };
 
-    public ListSortDirection Direction { get; }
-
-    public SortAdorner(UIElement element, ListSortDirection direction) : base(element)
-    {
-        Direction = direction;
-    }
+    public ListSortDirection Direction { get; } = direction;
 
     protected override void OnRender(DrawingContext drawingContext)
     {

@@ -4,7 +4,7 @@ using BusinessLogic.Models;
 
 namespace Client.Windows.Exercises;
 
-public partial class EditExerciseWindow : Window
+public partial class EditExerciseWindow
 {
     public event Action<Exercise> OnExerciseSaved;
     
@@ -23,7 +23,7 @@ public partial class EditExerciseWindow : Window
 
     private void HandleSaveButtonClicked(object sender, RoutedEventArgs e)
     {
-        if (database.Exercises.GetList().Any(exercise => exercise.Name == NameTextBox.Text))
+        if (ExerciseExists())
         {
             Console.WriteLine("This exercise already exists!");
             return;
@@ -32,5 +32,10 @@ public partial class EditExerciseWindow : Window
         exercise.Name = NameTextBox.Text;
         OnExerciseSaved?.Invoke(exercise);
         Close();
+    }
+
+    private bool ExerciseExists()
+    {
+        return database.Exercises.GetList().Any(exercise => exercise.Name == NameTextBox.Text);
     }
 }

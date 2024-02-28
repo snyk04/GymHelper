@@ -20,9 +20,7 @@ public partial class AddSetWindow
             Reps = int.Parse(RepsTextBox.Text, CultureInfo.InvariantCulture),
             Weight = float.Parse(WeightTextBox.Text, CultureInfo.InvariantCulture)
         };
-        
         OnSetAdded?.Invoke(set);
-        
         Close();
     }
 }

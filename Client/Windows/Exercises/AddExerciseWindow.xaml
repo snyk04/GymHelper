@@ -6,7 +6,7 @@
         xmlns:utils="clr-namespace:Client.Utils"
         mc:Ignorable="d"
         Title="Добавить упражнение" Height="450" Width="800">
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" utils:MarginSetter.Margin="2">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" utils:MarginSetter.Margin="2">
         <StackPanel Orientation="Horizontal">
             <Label Content="Название"></Label>
             <TextBox Name="NameTextBox" Height="20" Width="200"></TextBox>

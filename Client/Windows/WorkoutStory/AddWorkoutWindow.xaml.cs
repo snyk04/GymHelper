@@ -2,7 +2,6 @@
 using BusinessLogic.Interfaces;
 using BusinessLogic.Models;
 using Client.Models;
-using Client.Utils.Sorting;
 
 namespace Client.Windows.WorkoutStory;
 
@@ -11,7 +10,6 @@ public partial class AddWorkoutWindow
     public event Action<Workout> OnWorkoutSaved;
 
     private readonly IDatabase database;
-    private readonly ListViewSorter listViewSorter;
     
     private List<Set> sets = new();
 
@@ -20,12 +18,6 @@ public partial class AddWorkoutWindow
         InitializeComponent();
 
         this.database = database;
-        listViewSorter = new ListViewSorter(SetList);
-    }
-
-    private void OnColumnHeaderClick(object sender, RoutedEventArgs e)
-    {
-        listViewSorter.OnColumnHeaderClick(sender);
     }
 
     private void HandleAddButtonClicked(object sender, RoutedEventArgs e)
@@ -73,7 +65,6 @@ public partial class AddWorkoutWindow
             DateTime = DateTimePicker.Value.Value,
             Sets = sets
         };
-        
         OnWorkoutSaved?.Invoke(workout);
         Close();
     }
@@ -82,26 +73,30 @@ public partial class AddWorkoutWindow
     {
         var setsView = (SetsView)SetList.SelectedItem;
 
-        if (setsView != null)
+        if (setsView == null)
         {
-            var editSetsWindow = new EditSetsWindow(database, setsView);
-            editSetsWindow.OnSetsUpdated += newSets =>
-            {
-                sets = newSets;
-                UpdateSetsList();
-            };
-            editSetsWindow.ShowDialog();
+            return;
         }
+        
+        var editSetsWindow = new EditSetsWindow(database, setsView);
+        editSetsWindow.OnSetsUpdated += newSets =>
+        {
+            sets = newSets;
+            UpdateSetsList();
+        };
+        editSetsWindow.ShowDialog();
     }
     
     private void OnDeleteClicked(object sender, RoutedEventArgs e)
     {
         var setView = (SetsView)SetList.SelectedItem;
 
-        if (setView != null)
+        if (setView == null)
         {
-            sets.RemoveAll(set => set.Exercise == setView.Exercise);
-            UpdateSetsList();
+            return;
         }
+        
+        sets.RemoveAll(set => set.Exercise == setView.Exercise);
+        UpdateSetsList();
     }
 }

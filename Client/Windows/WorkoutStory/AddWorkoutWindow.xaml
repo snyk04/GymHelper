@@ -11,8 +11,8 @@
         <ListView Name="SetList" HorizontalAlignment="Center">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Редактировать" Click="OnEditClicked"/>
-                    <MenuItem Header="Удалить" Click="OnDeleteClicked"/>
+                    <MenuItem Header="Редактировать" Click="OnEditClicked" />
+                    <MenuItem Header="Удалить" Click="OnDeleteClicked" />
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>
@@ -20,19 +20,19 @@
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Path=Exercise, Converter={StaticResource ExerciseNameConverter}}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Exercise" Click="OnColumnHeaderClick" Content="Упражнение"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Упражнение"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Path=Sets, Converter={StaticResource RepsSetConverter}}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Reps" Click="OnColumnHeaderClick" Content="Повторения"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Повторения"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Path=Sets, Converter={StaticResource WeightSetConverter}}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Weight" Click="OnColumnHeaderClick" Content="Вес"></GridViewColumnHeader>
+                            <GridViewColumnHeader Content="Вес"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>

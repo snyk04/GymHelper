@@ -19,7 +19,7 @@
                     <GridViewColumn Header="№" DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Converter={StaticResource IndexConverter}}" />
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Exercise" Click="OnColumnHeaderClick" Content="Упражнение"></GridViewColumnHeader>
+                            <GridViewColumnHeader Tag="Name" Click="OnColumnHeaderClick" Content="Упражнение"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>

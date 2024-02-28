@@ -7,17 +7,10 @@ namespace Client.Utils.Sorting;
 /// <summary>
 /// Sorts list view after clicking on column headers. Also draws sort adorners in column headers (🔼 or 🔽)
 /// </summary>
-public class ListViewSorter
+public class ListViewSorter(ListView listView)
 {
-    private readonly ListView listView;
-    
     private GridViewColumnHeader listViewSortingColumn;
     private SortAdorner listViewSortAdorner;
-
-    public ListViewSorter(ListView listView)
-    {
-        this.listView = listView;
-    }
 
     public void OnColumnHeaderClick(object sender)
     {

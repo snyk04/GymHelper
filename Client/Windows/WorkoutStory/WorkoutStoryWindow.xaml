@@ -10,8 +10,8 @@
         <ListView Name="WorkoutList" HorizontalAlignment="Center">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Редактировать" Click="OnEditClicked"/>
-                    <MenuItem Header="Удалить" Click="OnDeleteClicked"/>
+                    <MenuItem Header="Редактировать" Click="OnEditClicked" />
+                    <MenuItem Header="Удалить" Click="OnDeleteClicked" />
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>

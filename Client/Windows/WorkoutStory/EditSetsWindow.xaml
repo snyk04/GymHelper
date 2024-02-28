@@ -21,7 +21,6 @@
                             <GridViewColumnHeader Tag="Reps" Click="OnColumnHeaderClick" Content="Повторения"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime, Converter={StaticResource DateTimeConverter}}"> -->
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Weight}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="Weight" Click="OnColumnHeaderClick" Content="Вес"></GridViewColumnHeader>
@@ -33,7 +32,9 @@
         <Button Width="100" Height="20" Click="HandleAddButtonClicked" Content="Добавить"></Button>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label Content="Упражнение"></Label>
-            <ComboBox Name="ExerciseComboBox" DisplayMemberPath="Name" Height="20" Width="100" DropDownClosed="ExerciseComboBox_OnDropDownClosed"></ComboBox>
+            <ComboBox Name="ExerciseComboBox" DisplayMemberPath="Name" Height="20" Width="100"
+                      DropDownClosed="ExerciseComboBox_OnDropDownClosed">
+            </ComboBox>
         </StackPanel>
         <Button Width="100" Height="20" Click="HandleSaveButtonClicked" Content="Сохранить"></Button>
     </StackPanel>

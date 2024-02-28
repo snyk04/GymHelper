@@ -9,12 +9,12 @@
     <StackPanel VerticalAlignment="Center" utils:MarginSetter.Margin="2">
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Content="Повторения"></Label>
             <Label Grid.Row="1" Grid.Column="0" Content="Вес"></Label>

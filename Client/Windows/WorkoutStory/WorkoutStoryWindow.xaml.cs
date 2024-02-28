@@ -54,37 +54,41 @@ public partial class WorkoutStoryWindow
     {
         var workoutView = (WorkoutView)WorkoutList.SelectedItem;
 
-        if (workoutView != null)
+        if (workoutView == null)
         {
-            var editWorkoutWindow = new EditWorkoutWindow(database, database.Workouts.Get(workoutView.Id));
-            editWorkoutWindow.OnWorkoutUpdated += workout =>
-            {
-                foreach (var set in workout.Sets)
-                {
-                    if (database.Sets.GetList().Any(setInDb => setInDb.Id == set.Id))
-                    {
-                        database.Sets.Update(set);
-                    }
-                    else
-                    {
-                        database.Sets.Add(set);
-                    }
-                }
-                database.Workouts.Update(workout);
-                UpdateWorkoutList();
-            };
-            editWorkoutWindow.ShowDialog();
+            return;
         }
+        
+        var editWorkoutWindow = new EditWorkoutWindow(database, database.Workouts.Get(workoutView.Id));
+        editWorkoutWindow.OnWorkoutUpdated += workout =>
+        {
+            foreach (var set in workout.Sets)
+            {
+                if (database.Sets.GetList().Any(setInDb => setInDb.Id == set.Id))
+                {
+                    database.Sets.Update(set);
+                }
+                else
+                {
+                    database.Sets.Add(set);
+                }
+            }
+            database.Workouts.Update(workout);
+            UpdateWorkoutList();
+        };
+        editWorkoutWindow.ShowDialog();
     }
     
     private void OnDeleteClicked(object sender, RoutedEventArgs e)
     {
         var workout = (WorkoutView)WorkoutList.SelectedItem;
 
-        if (workout != null)
+        if (workout == null)
         {
-            database.Workouts.Remove(workout.Id);
-            UpdateWorkoutList();
+            return;
         }
+        
+        database.Workouts.Remove(workout.Id);
+        UpdateWorkoutList();
     }
 }

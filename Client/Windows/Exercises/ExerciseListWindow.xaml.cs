@@ -17,16 +17,21 @@ public partial class ExerciseListWindow
         this.database = database;
         listViewSorter = new ListViewSorter(ExerciseList);
 
+        UpdateExerciseList();
+    }
+
+    private void UpdateExerciseList()
+    {
         ExerciseList.ItemsSource = database.Exercises.GetList().OrderBy(exercise => exercise.Name);
     }
 
     private void HandleAddButtonClicked(object sender, RoutedEventArgs e)
     {
         var addExerciseWindow = new AddExerciseWindow(database);
-        addExerciseWindow.OnExerciseSaved += exercise =>
+        addExerciseWindow.OnExerciseAdded += exercise =>
         {
             database.Exercises.Add(exercise);
-            ExerciseList.ItemsSource = database.Exercises.GetList().OrderBy(exercise => exercise.Name);
+            UpdateExerciseList();
         };
         addExerciseWindow.ShowDialog();
     }
@@ -38,7 +43,7 @@ public partial class ExerciseListWindow
         editExerciseWindow.OnExerciseSaved += exercise =>
         {
             database.Exercises.Update(exercise);
-            ExerciseList.ItemsSource = database.Exercises.GetList().OrderBy(exercise => exercise.Name);
+            UpdateExerciseList();
         };
         editExerciseWindow.ShowDialog();
     }
