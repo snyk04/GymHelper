@@ -1,25 +1,25 @@
-﻿<Window x:Class="Client.Windows.WorkoutStory.WorkoutStoryWindow"
+﻿<Window x:Class="Client.Windows.Exercises.ExerciseListWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:utils="clr-namespace:Client.Utils"
         mc:Ignorable="d"
-        Title="История тренировок" Height="450" Width="800">
-    <StackPanel VerticalAlignment="Center" utils:MarginSetter.Margin="2">
-        <ListView Name="WorkoutList" HorizontalAlignment="Center">
+        Title="Упражнения" Height="450" Width="800">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" utils:MarginSetter.Margin="2">
+        <ListView Name="ExerciseList" HorizontalAlignment="Center">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Редактировать" Click="OnEditClicked"/>
-                    <MenuItem Header="Удалить" Click="OnDeleteClicked"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="№" DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Converter={StaticResource IndexConverter}}" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime, Converter={StaticResource DateTimeConverter}}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="DateTime" Click="OnColumnHeaderClick" Content="Дата"></GridViewColumnHeader>
+                            <GridViewColumnHeader Tag="Exercise" Click="OnColumnHeaderClick" Content="Упражнение"></GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
@@ -27,4 +27,5 @@
         </ListView>
         <Button Width="100" Height="20" Click="HandleAddButtonClicked" Content="Добавить"></Button>
     </StackPanel>
+    </Grid>
 </Window>
