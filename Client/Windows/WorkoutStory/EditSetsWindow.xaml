@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:utils="clr-namespace:Client.Utils"
         mc:Ignorable="d"
-        Title="Редактировать упражнение" Height="450" Width="800">
+        Title="Редактировать упражнение" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
     <StackPanel VerticalAlignment="Center" utils:MarginSetter.Margin="2">
         <ListView Name="SetList" HorizontalAlignment="Center">
             <ListView.ContextMenu>

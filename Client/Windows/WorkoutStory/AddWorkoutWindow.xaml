@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:utils="clr-namespace:Client.Utils"
         mc:Ignorable="d"
-        Title="Добавить тренировку" Height="450" Width="800">
+        Title="Добавить тренировку" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
     <StackPanel VerticalAlignment="Center" utils:MarginSetter.Margin="2">
         <ListView Name="SetList" HorizontalAlignment="Center">
             <ListView.ContextMenu>

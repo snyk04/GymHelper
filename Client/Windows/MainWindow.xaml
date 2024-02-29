@@ -4,12 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="GymHelper" Height="450" Width="800">
-    <DockPanel>
-        <Menu DockPanel.Dock="Top" Height="20">
-            <MenuItem x:Name="WindowsMenu" Header="Окна"></MenuItem>
-        </Menu>
-        <StackPanel VerticalAlignment="Center">
-        </StackPanel>
-    </DockPanel>
+        Title="GymHelper" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
+    <StackPanel VerticalAlignment="Center">
+        <Button Content="История тренировок" Width="150" Click="OpenWorkoutStoryWindow"></Button>
+        <Button Content="Упражнения" Width="150" Click="OpenExerciseListWindow"></Button>
+    </StackPanel>
 </Window>

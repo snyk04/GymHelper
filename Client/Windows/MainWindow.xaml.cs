@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using BusinessLogic.Interfaces;
 using Client.Windows.Exercises;
 using Client.Windows.WorkoutStory;
@@ -17,24 +16,6 @@ public partial class MainWindow
     {
         this.database = database;
         InitializeComponent();
-        InitializeWindowsMenu();
-    }
-    
-    private void InitializeWindowsMenu()
-    {
-        WindowsMenu.Items.Clear();
-        AddNavigationMenuItem("История тренировок", OpenWorkoutStoryWindow);
-        AddNavigationMenuItem("Упражнения", OpenExerciseListWindow);
-    }
-
-    private void AddNavigationMenuItem(string name, RoutedEventHandler clickHandler)
-    {
-        var workoutStory = new MenuItem
-        {
-            Header = name
-        };
-        workoutStory.Click += clickHandler; 
-        WindowsMenu.Items.Add(workoutStory);
     }
         
     private void OpenWorkoutStoryWindow(object sender, RoutedEventArgs routedEventArgs)
