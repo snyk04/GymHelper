@@ -16,8 +16,15 @@ public partial class MainWindow
     {
         this.database = database;
         InitializeComponent();
+        SetLastWorkoutText(database);
     }
-        
+
+    private void SetLastWorkoutText(IDatabase database)
+    {
+        var lastWorkout = database.Workouts.GetList().OrderBy(workout => workout.DateTime).Last();
+        LastWorkoutLabel.Content = $"Последняя тренировка была {lastWorkout.DateTime.ToShortDateString()}";
+    }
+
     private void OpenWorkoutStoryWindow(object sender, RoutedEventArgs routedEventArgs)
     {
         var sellHistoryWindow = new WorkoutStoryWindow(database);
