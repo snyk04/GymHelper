@@ -1,12 +1,16 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 using BusinessLogic.Interfaces;
 using Client.Models;
+using Client.Utils;
 using Client.Utils.Sorting;
 
 namespace Client.Windows.WorkoutStory;
 
 public partial class WorkoutStoryWindow
 {
+    private readonly SolidColorBrush workoutDayColor = Brushes.Lime;
+    
     private readonly IDatabase database;
     private readonly ListViewSorter listViewSorter;
 
@@ -16,8 +20,16 @@ public partial class WorkoutStoryWindow
 
         this.database = database;
         listViewSorter = new ListViewSorter(WorkoutList);
-
+        
+        InitializeCalendar();
         UpdateWorkoutList();
+    }
+
+    private void InitializeCalendar()
+    {
+        Calendar.DisplayDate = DateTime.Today;
+        var workoutDates = database.Workouts.GetList().Select(workout => workout.DateTime);
+        Calendar.HighlightDates(workoutDates, workoutDayColor, BackgroundProperty, ForegroundProperty);
     }
 
     private void UpdateWorkoutList()
