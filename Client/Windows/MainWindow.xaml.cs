@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using BusinessLogic.Interfaces;
 using Client.Windows.Exercises;
+using Client.Windows.Statistics;
 using Client.Windows.WorkoutStory;
 
 namespace Client.Windows;
@@ -35,5 +36,11 @@ public partial class MainWindow
     {
         var exerciseListWindow = new ExerciseListWindow(database);
         exerciseListWindow.ShowDialog();
+    }
+    
+    private void OpenStatisticsWindow(object sender, RoutedEventArgs routedEventArgs)
+    {
+        var statisticsWindow = new StatisticsWindow(database);
+        statisticsWindow.ShowDialog();
     }
 }

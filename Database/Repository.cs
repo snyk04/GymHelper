@@ -14,7 +14,7 @@ public class Repository<T> : IRepository<T> where T : class
         this.applicationDbContext = applicationDbContext;
     }
 
-    public IEnumerable<T> GetList()
+    public List<T> GetList()
     {
         return dbSet.ToList();
     }

@@ -9,5 +9,6 @@
         <Label Name="LastWorkoutLabel"></Label>
         <Button Content="История тренировок" Width="150" Click="OpenWorkoutStoryWindow"></Button>
         <Button Content="Упражнения" Width="150" Click="OpenExerciseListWindow"></Button>
+        <Button Content="Статистика" Width="150" Click="OpenStatisticsWindow"></Button>
     </StackPanel>
 </Window>
