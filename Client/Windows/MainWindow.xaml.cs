@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using BusinessLogic.Interfaces;
-using Client.Windows.Exercises;
+using Client.New.ViewModels;
+using Client.New.Views;
 using Client.Windows.Statistics;
 using Client.Windows.WorkoutStory;
 
@@ -12,10 +13,13 @@ namespace Client.Windows;
 public partial class MainWindow
 {
     private readonly IDatabase database;
+    private readonly ExercisesViewModel exercisesViewModel;
     
     public MainWindow(IDatabase database)
     {
         this.database = database;
+        exercisesViewModel = new ExercisesViewModel(database);
+        
         InitializeComponent();
         SetLastWorkoutText(database);
     }
@@ -34,7 +38,7 @@ public partial class MainWindow
 
     private void OpenExerciseListWindow(object sender, RoutedEventArgs routedEventArgs)
     {
-        var exerciseListWindow = new ExerciseListWindow(database);
+        var exerciseListWindow = new ExercisesWindow(exercisesViewModel);
         exerciseListWindow.ShowDialog();
     }
     
