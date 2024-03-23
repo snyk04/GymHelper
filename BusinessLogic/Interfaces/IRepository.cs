@@ -2,6 +2,8 @@
 {
     public interface IRepository<T> where T : class
     {
+        event Action OnChange;
+        
         List<T> GetList();
         T Get(int id);
         void Add(T data);

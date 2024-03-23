@@ -8,6 +8,8 @@ public class Repository<T> : IRepository<T> where T : class
     private readonly DbSet<T> dbSet;
     private readonly ApplicationDbContext applicationDbContext;
 
+    public event Action OnChange;
+
     public Repository(DbSet<T> dbSet, ApplicationDbContext applicationDbContext)
     {
         this.dbSet = dbSet;
@@ -28,12 +30,14 @@ public class Repository<T> : IRepository<T> where T : class
     {
         dbSet.Add(data);
         applicationDbContext.SaveChanges();
+        OnChange?.Invoke();
     }
 
     public void Update(T data)
     {
         dbSet.Update(data);
         applicationDbContext.SaveChanges();
+        OnChange?.Invoke();
     }
 
     public void Remove(int id)
@@ -46,11 +50,13 @@ public class Repository<T> : IRepository<T> where T : class
         }
 
         Remove(dataToRemove);
+        OnChange?.Invoke();
     }
     
     public void Remove(T data)
     {
         dbSet.Remove(data);
         applicationDbContext.SaveChanges();
+        OnChange?.Invoke();
     }
 }

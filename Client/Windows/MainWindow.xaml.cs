@@ -2,8 +2,8 @@
 using BusinessLogic.Interfaces;
 using Client.New.ViewModels;
 using Client.New.Views;
-using Client.Windows.Statistics;
 using Client.Windows.WorkoutStory;
+using StatisticsWindow = Client.New.Views.StatisticsWindow;
 
 namespace Client.Windows;
 
@@ -14,11 +14,13 @@ public partial class MainWindow
 {
     private readonly IDatabase database;
     private readonly ExercisesViewModel exercisesViewModel;
+    private readonly StatisticsViewModel statisticsViewModel;
     
     public MainWindow(IDatabase database)
     {
         this.database = database;
         exercisesViewModel = new ExercisesViewModel(database);
+        statisticsViewModel = new StatisticsViewModel(database);
         
         InitializeComponent();
         SetLastWorkoutText(database);
@@ -44,7 +46,7 @@ public partial class MainWindow
     
     private void OpenStatisticsWindow(object sender, RoutedEventArgs routedEventArgs)
     {
-        var statisticsWindow = new StatisticsWindow(database);
+        var statisticsWindow = new StatisticsWindow(statisticsViewModel);
         statisticsWindow.ShowDialog();
     }
 }

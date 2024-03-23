@@ -1,0 +1,21 @@
+﻿<Window x:Class="Client.New.Views.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Client.New.Views"
+        mc:Ignorable="d"
+        Title="Статистика" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Всего тренировок:"></Label>
+            <Label Content="{Binding WorkoutsCount}"></Label>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Любимое упражнение:"></Label>
+            <Label Content="{Binding FavouriteExercise.Exercise.Name}"></Label>
+            <Label Content="|"></Label>
+            <Label Content="{Binding FavouriteExercise.AmountOfWorkouts}"></Label>
+        </StackPanel>
+    </StackPanel>
+</Window>
