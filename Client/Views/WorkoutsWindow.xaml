@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="История тренировок" Height="450" Width="800">
+        Title="История тренировок" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
     <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
         <Calendar SelectionMode="SingleDate">
             <b:Interaction.Triggers>
