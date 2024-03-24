@@ -69,7 +69,8 @@ public sealed class WorkoutsViewModel : ViewModel
     
     public SetsView SelectedSetsView { get; set; }
     public Set SelectedSet { get; set; }
-
+    public DateTime SelectedDate { get; set; }
+    
     private Workout selectedWorkout;
     
     public ICommand SelectedDatesChanged { get; }
@@ -83,6 +84,7 @@ public sealed class WorkoutsViewModel : ViewModel
     {
         this.database = database;
 
+        SelectedDate = DateTime.Today;
         Exercises = new ObservableCollection<Exercise>(database.Exercises.GetList());
 
         SelectedDatesChanged = new DelegateCommand(HandleSelectedDatesChanged);
@@ -160,7 +162,6 @@ public sealed class WorkoutsViewModel : ViewModel
                 }
 
                 database.Sets.Update(updatedSet);
-                // SetsViews = new ObservableCollection<SetsView>(GetSetsViews(selectedWorkout));
             };
         }
         Exercise = Sets.First().Exercise;
@@ -202,11 +203,14 @@ public sealed class WorkoutsViewModel : ViewModel
         {
             Exercise = NewExercise
         };
+
+        selectedWorkout ??= new Workout([], SelectedDate);
         
         database.Sets.Add(set);
         selectedWorkout.Sets.Add(set);
         database.Workouts.Update(selectedWorkout);
-        
+
+        SetsViews ??= [];
         SetsViews.Add(new SetsView(NewExercise, [set]));
     }
 

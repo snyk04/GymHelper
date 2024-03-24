@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="История тренировок" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
     <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-        <Calendar SelectionMode="SingleDate">
+        <Calendar SelectionMode="SingleDate" SelectedDate="{Binding SelectedDate}">
             <b:Interaction.Triggers>
                 <b:EventTrigger EventName="SelectedDatesChanged">
                     <b:InvokeCommandAction Command="{Binding SelectedDatesChanged}" PassEventArgsToCommand="True" />
