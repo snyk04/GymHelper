@@ -6,7 +6,6 @@
         mc:Ignorable="d"
         Title="GymHelper" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Label Name="LastWorkoutLabel"></Label>
         <Button Content="История тренировок" Width="150" Click="OpenWorkoutStoryWindow"></Button>
         <Button Content="Упражнения" Width="150" Click="OpenExerciseListWindow"></Button>
         <Button Content="Статистика" Width="150" Click="OpenStatisticsWindow"></Button>

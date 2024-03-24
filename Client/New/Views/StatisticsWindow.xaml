@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:Client.New.Views"
         mc:Ignorable="d"
         Title="Статистика" Height="1080" Width="1920" Left="0" Top="0" WindowState="Maximized">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -16,6 +15,10 @@
             <Label Content="{Binding FavouriteExercise.Exercise.Name}"></Label>
             <Label Content="|"></Label>
             <Label Content="{Binding FavouriteExercise.AmountOfWorkouts}"></Label>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Последняя тренировка:"></Label>
+            <Label Content="{Binding LastWorkoutDateTime, Converter={StaticResource DateTimeConverter}}"></Label>
         </StackPanel>
     </StackPanel>
 </Window>

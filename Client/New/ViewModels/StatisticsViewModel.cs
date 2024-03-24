@@ -30,6 +30,17 @@ public sealed class StatisticsViewModel : ViewModel
         }
     }
 
+    private DateTime lastWorkoutDateTime;
+    public DateTime LastWorkoutDateTime
+    {
+        get => lastWorkoutDateTime;
+        set
+        {
+            lastWorkoutDateTime = value;
+            OnPropertyChanged();
+        }
+    }
+
     public StatisticsViewModel(IDatabase database)
     {
         this.database = database;
@@ -41,7 +52,8 @@ public sealed class StatisticsViewModel : ViewModel
 
     private void HandleWorkoutsChange()
     {
-        workoutsCount = database.Workouts.GetList().Count;
+        WorkoutsCount = database.Workouts.GetList().Count;
         FavouriteExercise = WorkoutAnalyzer.GetFavouriteExercise(database.Workouts.GetList());
+        LastWorkoutDateTime = database.Workouts.GetList().OrderBy(workout => workout.DateTime).Last().DateTime;
     }
 }
