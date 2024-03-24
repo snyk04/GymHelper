@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -9,7 +10,7 @@ public class WeightSetConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        var sets = (List<Set>)value;
+        var sets = (ObservableCollection<Set>)value;
         return string.Join(", ", sets.Select(set => set.Weight.ToString(CultureInfo.InvariantCulture)));
     }
 

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using BusinessLogic.Interfaces;
-using Client.Windows;
+using Client.New.Views;
 
 namespace Client;
 
